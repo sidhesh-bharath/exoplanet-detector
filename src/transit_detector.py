@@ -1,8 +1,8 @@
+import pandas as pd
 from lightcurve_fetcher import fetch_lightcurve
 from transitleastsquares import transitleastsquares
 
-#TIC_IDS = ["25155310", "278564876", "150428135", "388857263", "413248763", "438128814", "256428741"]
-TIC_IDS = ["25155310"]
+TIC_IDS = pd.read_csv("./src/targets.csv", header=None, dtype=str, skipinitialspace=True).iloc[0].tolist()
 
 for id in TIC_IDS:
     time, flux, flux_err = fetch_lightcurve(id)
